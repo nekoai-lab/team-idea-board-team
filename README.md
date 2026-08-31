@@ -5,6 +5,8 @@ AI駆動開発の最終回で、チームの方針合わせ、個人実装、Pul
 ## このテンプレートで体験すること
 
 ```text
+チーム用リポジトリを設定する
+  ↓
 チームで方針と完成条件を揃える
   ↓
 BranchでAIと機能を実装する
@@ -55,10 +57,13 @@ Lint、型チェック、テスト、静的サイトのビルドを順番に実�
 
 ## 演習資料
 
+- リポジトリ設定：[TEAM_SETUP.md](./TEAM_SETUP.md)
 - 受講生用：[WORKSHOP.md](./WORKSHOP.md)
 - レビュー用：[REVIEW_GUIDE.md](./REVIEW_GUIDE.md)
 - 完了条件：[DEFINITION_OF_DONE.md](./DEFINITION_OF_DONE.md)
 - 講師用準備：[instructor/SETUP.md](./instructor/SETUP.md)
+- ワーク案内スライド原稿：[instructor/WORKSHOP_SLIDES.md](./instructor/WORKSHOP_SLIDES.md)
+- GitHub Issueテンプレート：[.github/ISSUE_TEMPLATE](./.github/ISSUE_TEMPLATE)
 - Ticket原稿：[instructor/tickets](./instructor/tickets)
 
 ## 標準の担当

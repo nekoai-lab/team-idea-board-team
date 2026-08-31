@@ -1,70 +1,96 @@
 # 講師用セットアップ
 
-## 1. チームごとのPublicリポジトリを作成する
+## 講義前に準備するもの
 
-このリポジトリをGitHub Template Repositoryに設定し、チームごとに複製します。
+通常、講師はチーム別リポジトリを作成しません。
+受講生がワーク冒頭で、テンプレートからチーム用リポジトリを作成します。
 
-例：
+講師は次の情報を準備します。
 
-```text
-team-idea-board-01
-team-idea-board-02
-team-idea-board-03
-```
+- テンプレートリポジトリのURL
+- チーム番号と参加者一覧
+- 参加者のGitHubユーザー名
+- [TEAM_SETUP.md](../TEAM_SETUP.md)への案内
+- 80分の演習時間（セットアップ20分、開発ワーク60分）
+- セットアップに失敗したチームが使う予備リポジトリ
 
-サンプルデータのみを使用し、秘密情報や個人情報を含めないでください。
+参加者には講義前に、GitHubへのサインイン、GitHub CLIの認証、Node.js 20.9以上の準備を依頼します。
 
-## 2. 参加者をCollaboratorへ追加する
+## 1. テンプレートリポジトリを公開する
 
-各チームの参加者にWrite権限を付与します。講義前日までに、全員がリポジトリを開けることを確認します。
+このリポジトリをGitHubへPushし、Publicリポジトリとして公開します。
 
-## 3. Issueを作成・割り当てる
+リポジトリの「Settings」を開き、「Template repository」を選びます。
+これにより、受講生が「Use this template」からチーム用リポジトリを作成できます。
 
-`instructor/tickets/`の本文を使ってIssueを作成します。
+テンプレートリポジトリには、個人情報、秘密情報、業務データを含めません。
 
-- 3人チーム：Ticket A・B・C
-- 4人チーム：Ticket A・B・C・D
+## 2. テンプレートの内容を確認する
 
-Issueは事前に各参加者へAssignしてください。
+講義前に、次の内容が`main`へ反映されていることを確認します。
 
-レビュー相手も事前に決めます。
+- `.github/workflows/ci.yml`
+- `.github/workflows/deploy-pages.yml`
+- `.github/ISSUE_TEMPLATE/`のTicket AからD
+- `.github/PULL_REQUEST_TEMPLATE.md`
+- `TEAM_SETUP.md`
+- `WORKSHOP.md`
+- `REVIEW_GUIDE.md`
+- `DEFINITION_OF_DONE.md`
 
-- 3人チーム：A→B→C→A
-- 4人チーム：A→B→C→D→A
-
-## 4. GitHub Pagesを有効にする
-
-Repository Settings → Pages → Build and deployment → Sourceで「GitHub Actions」を選択します。
-
-`main`へPushされると、`.github/workflows/deploy-pages.yml`が検証とデプロイを実行します。
-
-## 5. `main`を保護する
-
-Repository Settingsから、`main`に次を設定します。
-
-- Pull Requestを必須にする
-- 1名以上のApproveを必須にする
-- Status check `quality`の成功を必須にする
-- 未解決の会話がある場合はマージ不可にする
-
-## 6. 事前動作確認
-
-講師アカウントで以下を確認します。
+講師のローカル環境で次のコマンドを実行します。
 
 ```bash
 npm ci
 npm run check
 ```
 
-確認項目：
+スターターでは、基本テストが成功し、Ticket用の9件が`todo`として表示されます。
 
-- スターターのCIが成功する
-- 4件のTicketテストが`todo`として表示される
-- Pull Requestテンプレートに、チーム方針と人間の判断を書く欄がある
-- `main`へのPushでGitHub Pagesが公開される
-- 公開URLでサンプルアイデア3件が表示される
+## 3. チーム編成を共有する
 
-## 当日の進行
+3人または4人でチームを作り、チーム番号を割り当てます。
+
+講義開始前に、各チームでリポジトリを作成する代表者を1名だけ決めます。
+代表者はセットアップ作業を担当しますが、開発ワークの責任者ではありません。
+
+代表者には画面共有を依頼します。
+ほかの参加者は招待承認とローカル確認だけを行い、GitHubの設定を同時に変更しないよう案内します。
+
+## チームリポジトリ設定20分
+
+受講生は[TEAM_SETUP.md](../TEAM_SETUP.md)に沿って設定します。
+講師は、次の時刻で全チームへ進行を案内します。
+
+| 時間 | 講師が確認すること |
+|---|---|
+| 0〜5分 | Publicリポジトリが作成され、全員へ招待が送られた |
+| 5〜10分 | CIとGitHub Pagesが成功し、`main`が保護された |
+| 10〜15分 | Issue、実装担当、レビュー相手が設定された |
+| 15〜20分 | 全員のローカル環境で`npm run check`が成功した |
+
+5分、10分、15分の時点で進んでいないチームには、試行錯誤を続けず講師を呼ぶよう案内します。
+
+20分時点で、各チームに次の2つをチャットへ投稿してもらいます。
+
+```text
+リポジトリURL：
+GitHub Pages URL：
+```
+
+## セットアップの確認項目
+
+- リポジトリ名が`team-idea-board-チーム番号`になっている
+- VisibilityがPublicになっている
+- 全員がCollaboratorとして参加している
+- CIの`quality`が成功している
+- GitHub Pagesでサンプルアイデア3件が表示される
+- `main`へのマージにPull Request、1名のApprove、`quality`の成功が必要になっている
+- 3人チームはTicket AからC、4人チームはTicket AからDが作成されている
+- 各Issueに実装担当者がAssignされている
+- レビュー順が決まっている
+
+## 開発ワーク60分
 
 ### 0〜8分：チームで方針を揃える
 
@@ -103,7 +129,16 @@ GitHub Pagesの公開URLで全員分の機能を確認します。
 - 他者のレビューで気づいたこと
 - 次に改善したいこと
 
-## 当日の復旧方針
+## セットアップ時の復旧方針
+
+- 代表者がPublicリポジトリを作れない場合：別の参加者の個人アカウントで作成する
+- Collaboratorの招待が届かない場合：GitHubユーザー名を再確認し、招待を送り直す
+- Actionsに「Run workflow」が表示されない場合：`main`に`workflow_dispatch`が含まれているか確認する
+- `quality`を保護設定で選べない場合：CIを手動実行し、成功後に設定画面を再読み込みする
+- Pagesの公開に失敗した場合：Sourceが「GitHub Actions」になっているか確認し、Deploy workflowを再実行する
+- 20分で設定が終わらない場合：講師が用意した予備リポジトリへ参加者を招待して続行する
+
+## 開発ワーク時の復旧方針
 
 - 方針確認が長引いた場合：各自の説明を30秒に区切り、未解決事項だけを残す
 - 実装が止まった場合：受け入れ条件を1つに絞る
