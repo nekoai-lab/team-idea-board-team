@@ -133,7 +133,8 @@ GitHub Pagesの公開URLで全員分の機能を確認します。
 ## セットアップ時の復旧方針
 
 - 代表者がPublicリポジトリを作れない場合：別の参加者の個人アカウントで作成する
-- Collaboratorの招待が届かない場合：GitHubユーザー名を再確認し、招待を送り直す
+- Collaboratorの招待が届かない場合：GitHubユーザー名を再確認し、招待を送り直す。届かないままの場合はリポジトリURLを直接開いて「Accept invitation」から承認させる
+- 代表者の設定待ちで手が空く場合：ほかのメンバーへ`TEAM_SETUP.md`の手順5を先に進めるよう案内する
 - Actionsに「Run workflow」が表示されない場合：`main`に`workflow_dispatch`が含まれているか確認する
 - Rulesetの設定画面で`quality`を選べない場合：CIを手動実行し、成功後に設定画面を再読み込みする
 - Rulesetが原因で進行が止まった場合：Rulesetを削除せず、Enforcement statusを「Disabled」に切り替えて復旧し、原因を解消してから「Active」へ戻す
