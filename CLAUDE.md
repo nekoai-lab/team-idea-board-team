@@ -1,0 +1,47 @@
+# KAIZEN BOARD 開発ルール
+
+このリポジトリは、AI駆動開発のチーム演習用スターターです。
+
+## 目的
+
+各参加者が1つのGitHub Issueを担当し、1 Branch・1 Pull Requestで小さな機能を追加します。実装後は、別の参加者がPull Requestをレビューします。
+
+## 作業ルール
+
+- `main`へ直接Commit・Pushしない
+- 作業前に担当Issueと受け入れ条件を読む
+- 1つのIssueで、担当外の機能まで変更しない
+- 受け入れ条件を確認できるテストを先に具体化する
+- 既存の`it.todo`を実際のテストへ置き換える
+- 外部API、データベース、認証、秘密情報を追加しない
+- 新しい依存パッケージは、必要性を説明して人間の承認を得るまで追加しない
+- キーボード操作、ラベル、エラー理由など、基本的なアクセシビリティを保つ
+
+## 実装後の確認
+
+以下をすべて実行してください。
+
+```bash
+npm run check
+```
+
+成功したら、変更内容、確認方法、影響範囲を説明し、現在のBranchへCommitしてください。自分で`main`へマージはせず、Pull Requestを作成してレビューを依頼してください。
+
+## プロジェクト構成
+
+- `components/`：画面を構成する機能単位のコンポーネント
+- `tests/`：Ticketごとの受け入れ条件を確認するテスト
+- `data/ideas.ts`：匿名の固定サンプルデータ
+- `.github/workflows/`：CIとGitHub PagesへのCD
+
+スターターには、Ticket A〜Dに対応する未実装箇所があります。担当Issueに指定されたコンポーネントとテストを中心に変更してください。
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
