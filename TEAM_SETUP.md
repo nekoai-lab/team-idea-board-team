@@ -122,6 +122,10 @@ https://代表者のユーザー名.github.io/team-idea-board-01/
 6. 「Run workflow」を押し、Branchが`main`であることを確認して実行する
 7. Jobの`quality`が緑色になるまで待つ
 
+Actionsに「Deploy to GitHub Pages」の失敗が1件残っている場合があります。
+これはリポジトリ作成直後、Pagesを有効にする前に自動実行されたものです。
+このまま進めて問題ありません。手順3を終えた後のマージで、あらためて実行されて成功します。
+
 このCI実行は、次の手順で`quality`を必須チェックとして選べるようにするための事前準備です。
 実際のCIはPull Request上で体験し、アプリはレビュー後に`main`へマージしたときに自動公開します。
 「Deploy to GitHub Pages」は、この時点では手動実行しません。
@@ -207,3 +211,11 @@ npm run dev
 - [Collaboratorを招待する](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/inviting-collaborators-to-a-personal-repository)
 - [GitHub PagesをGitHub Actionsで公開する](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 - [Rulesetでブランチを保護する](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/creating-rulesets-for-a-repository)
+
+公開URLは次の形式です。ユーザー名の大文字はすべて小文字へ変換されます。
+
+```text
+https://代表者のユーザー名（すべて小文字）.github.io/team-idea-board-01/
+```
+
+最初のデプロイが成功すると、Settingsの「Pages」に「Visit site」が表示されます。

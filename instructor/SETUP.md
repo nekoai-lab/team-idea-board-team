@@ -138,6 +138,7 @@ GitHub Pagesの公開URLで全員分の機能を確認します。
 - Actionsに「Run workflow」が表示されない場合：`main`に`workflow_dispatch`が含まれているか確認する
 - Rulesetの設定画面で`quality`を選べない場合：CIを手動実行し、成功後に設定画面を再読み込みする
 - Rulesetが原因で進行が止まった場合：Rulesetを削除せず、Enforcement statusを「Disabled」に切り替えて復旧し、原因を解消してから「Active」へ戻す
+- リポジトリ作成直後の「Deploy to GitHub Pages」が失敗している場合：Pages有効化前の自動実行なので、そのまま進めてよいと案内する
 - Pagesの公開に失敗した場合：Sourceが「GitHub Actions」になっているか確認し、Deploy workflowを再実行する
 - 20分で設定が終わらない場合：講師が用意した予備リポジトリへ参加者を招待して続行する
 
