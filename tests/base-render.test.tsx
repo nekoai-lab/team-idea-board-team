@@ -12,7 +12,9 @@ describe("スターターアプリ", () => {
     expect(screen.getByLabelText("会議メモを同じ形式で残したいの投票数は8票です")).toBeTruthy();
     expect(screen.getByLabelText("問い合わせの引き継ぎ漏れを減らしたいの投票数は12票です")).toBeTruthy();
     expect(screen.getByLabelText("集中時間をチームで共有したいの投票数は5票です")).toBeTruthy();
-    expect(screen.queryByRole("button")).toBeNull();
+    expect(
+      screen.getAllByRole("button", { name: /の投票数は\d+票です/ }),
+    ).toHaveLength(3);
     expect(screen.queryByRole("textbox")).toBeNull();
     expect(screen.queryByText(/Ticket [A-D]/)).toBeNull();
   });
