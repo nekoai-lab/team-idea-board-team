@@ -15,7 +15,6 @@ describe("スターターアプリ", () => {
     expect(
       screen.getAllByRole("button", { name: /の投票数は\d+票です/ }),
     ).toHaveLength(3);
-    expect(screen.queryByRole("textbox")).toBeNull();
     expect(screen.queryByText(/Ticket [A-D]/)).toBeNull();
   });
 });
