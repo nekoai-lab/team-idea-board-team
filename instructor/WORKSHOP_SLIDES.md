@@ -103,10 +103,11 @@ Actions → CI → Run workflow：main
 初回CIは、次の設定で`quality`を必須チェックとして選べるようにするための事前準備です。
 この時点ではアプリを公開しません。実際のCIはPull Request上で、CDはレビュー後に`main`へマージしたときに体験します。
 
-## スライド8：`main`を保護する
+## スライド8：Rulesetで`main`を保護する
 
 ### 画面に表示する内容
 
+- Rulesetの名前は`protect-main`
 - Pull Requestを必須にする
 - 1名のApproveを必須にする
 - Status check `quality`を必須にする
@@ -115,6 +116,8 @@ Actions → CI → Run workflow：main
 ### 講師が伝えること
 
 この設定によって、実装者だけの判断では`main`へ変更を取り込めなくなります。
+Bypass listへ誰も追加しないため、代表者も同じ条件でPull Requestを使います。
+Rulesetは読み取り権限があれば全員が確認できるので、各自の画面で保護内容を見てもらいます。
 
 ## スライド9：全員がローカルで確認する
 

@@ -45,7 +45,7 @@ GitHubの「Settings」は代表者だけが操作します。
 | Collaborator | チームメンバーがBranchやPull Requestを作れるようにする権限 |
 | CI | コードの変更を自動で検証する仕組み |
 | GitHub Pages | 完成したアプリを公開する場所 |
-| Branch protection | レビューとCIが終わるまで`main`へマージできないようにする設定 |
+| Ruleset | レビューとCIが終わるまで`main`へマージできないようにする設定 |
 
 ## 20分の進め方
 
@@ -112,23 +112,31 @@ team-idea-board-01
 
 `quality`が失敗した場合は、最初に失敗したStepを開いて講師を呼びます。
 
-## 4. `main`を保護する
+## 4. Rulesetで`main`を保護する
 
 CIの`quality`が成功した後、代表者が次の順番で設定します。
 
 1. 「Settings」を開く
-2. 左側の「Branches」を開く
-3. 「Add branch protection rule」を押す
-4. Branch name patternへ`main`と入力する
-5. 「Require a pull request before merging」を選ぶ
-6. Required approvalsを1にする
-7. 「Require status checks to pass before merging」を選ぶ
-8. Status checkから`quality`を選ぶ
-9. 「Require conversation resolution before merging」を選ぶ
-10. 設定を保存する
+2. 左側の「Rules」から「Rulesets」を開く
+3. 「New ruleset」を押し、「New branch ruleset」を選ぶ
+4. Ruleset Nameへ`protect-main`と入力する
+5. Enforcement statusが「Active」になっていることを確認する
+6. 「Target branches」の「Add target」から「Include default branch」を選ぶ
+7. Rulesの「Restrict deletions」を選ぶ
+8. Rulesの「Block force pushes」を選ぶ
+9. Rulesの「Require a pull request before merging」を選び、「Required approvals」を1にする
+10. 同じ項目の中にある「Require conversation resolution before merging」を選ぶ
+11. Rulesの「Require status checks to pass」を選び、「Add checks」から`quality`を選ぶ
+12. 「Create」を押す
 
 「Require branches to be up to date before merging」は選びません。
 この演習では複数のPull Requestを短時間で順番にマージするため、毎回のBranch更新を必須にしない設定とします。
+
+「Bypass list」には誰も追加しません。
+代表者を含む全員が同じ条件でPull Requestを使う状態が、このワークで体験したい形です。
+
+設定が終わったら、チーム全員で「Settings」の「Rules」を開きます。
+Rulesetは読み取り権限があれば全員が確認できるため、`main`へ直接pushできない状態を各自の画面で確かめてから次へ進みます。
 
 `quality`が選択肢に表示されない場合は、設定を続けず講師を呼びます。
 
@@ -170,7 +178,7 @@ npm run dev
 - [ ] チーム全員がCollaboratorとして参加している
 - [ ] GitHub PagesのSourceが「GitHub Actions」になっている
 - [ ] CIの`quality`が1回成功している
-- [ ] `main`にPull Request、Approve、CIを必須とする保護設定がある
+- [ ] `protect-main` Rulesetが「Active」で、`main`にPull Request、Approve、CIが必須になっている
 - [ ] 全員に担当Issueとレビュー相手が割り当てられている
 - [ ] 全員のローカル環境で3件のアイデアカードを確認できる
 
@@ -179,4 +187,4 @@ npm run dev
 - [テンプレートからリポジトリを作成する](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
 - [Collaboratorを招待する](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/inviting-collaborators-to-a-personal-repository)
 - [GitHub PagesをGitHub Actionsで公開する](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
-- [Branch protection ruleを設定する](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule)
+- [Rulesetでブランチを保護する](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/creating-rulesets-for-a-repository)

@@ -17,7 +17,7 @@
 合計：80分
 ```
 
-最初に[TEAM_SETUP.md](./TEAM_SETUP.md)を開き、チーム用リポジトリ、CI、GitHub Pages、Branch protection、Issueを設定します。
+最初に[TEAM_SETUP.md](./TEAM_SETUP.md)を開き、チーム用リポジトリ、CI、GitHub Pages、Ruleset、Issueを設定します。
 「開発ワークの開始条件」をすべて満たしてから、以下の60分を開始します。
 
 ## ルール

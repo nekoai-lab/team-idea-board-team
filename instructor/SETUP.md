@@ -85,6 +85,7 @@ npm run check
 - GitHub PagesのSourceが「GitHub Actions」になっている
 - CIの`quality`が1回成功している
 - 全員がローカルで3件のアイデアカードを確認できる
+- `protect-main` Rulesetが作成され、Enforcement statusが「Active」になっている
 - `main`へのマージにPull Request、1名のApprove、`quality`の成功が必要になっている
 - 3人チームはTicket AからC、4人チームはTicket AからDが作成されている
 - 各Issueに実装担当者がAssignされている
@@ -134,7 +135,8 @@ GitHub Pagesの公開URLで全員分の機能を確認します。
 - 代表者がPublicリポジトリを作れない場合：別の参加者の個人アカウントで作成する
 - Collaboratorの招待が届かない場合：GitHubユーザー名を再確認し、招待を送り直す
 - Actionsに「Run workflow」が表示されない場合：`main`に`workflow_dispatch`が含まれているか確認する
-- `quality`を保護設定で選べない場合：CIを手動実行し、成功後に設定画面を再読み込みする
+- Rulesetの設定画面で`quality`を選べない場合：CIを手動実行し、成功後に設定画面を再読み込みする
+- Rulesetが原因で進行が止まった場合：Rulesetを削除せず、Enforcement statusを「Disabled」に切り替えて復旧し、原因を解消してから「Active」へ戻す
 - Pagesの公開に失敗した場合：Sourceが「GitHub Actions」になっているか確認し、Deploy workflowを再実行する
 - 20分で設定が終わらない場合：講師が用意した予備リポジトリへ参加者を招待して続行する
 
