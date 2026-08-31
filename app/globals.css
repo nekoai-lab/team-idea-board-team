@@ -339,6 +339,78 @@ main {
   font-size: 10px;
 }
 
+.idea-form {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 22px 22px 6px 22px;
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.idea-form h2 {
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  margin: 0 0 18px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.form-field label {
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--ink);
+  padding: 10px 12px;
+}
+
+.form-field textarea {
+  min-height: 84px;
+  resize: vertical;
+}
+
+.char-count {
+  color: var(--ink-soft);
+  font-size: 11px;
+  text-align: right;
+}
+
+.form-error {
+  background: var(--orange-soft);
+  border-radius: 10px;
+  color: var(--orange);
+  font-size: 12px;
+  margin: 0 0 16px;
+  padding: 10px 12px;
+}
+
+.idea-form button {
+  background: var(--blue);
+  border: 0;
+  border-radius: 999px;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 12px 20px;
+  width: 100%;
+}
+
+.idea-form button:hover {
+  background: #1d55c9;
+}
+
 footer {
   border-top: 1px solid var(--line);
   color: var(--ink-soft);
