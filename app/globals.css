@@ -255,6 +255,31 @@ main {
   font-size: 13px;
 }
 
+.idea-search {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.idea-search label {
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.idea-search input {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px 14px 4px 14px;
+  color: var(--ink);
+  padding: 12px 16px;
+}
+
+.idea-search input::placeholder {
+  color: var(--ink-soft);
+}
+
 .idea-list {
   display: flex;
   flex-direction: column;
