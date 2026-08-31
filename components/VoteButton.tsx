@@ -5,15 +5,9 @@ type VoteButtonProps = {
 
 export function VoteButton({ initialVotes, ideaTitle }: VoteButtonProps) {
   return (
-    <button
-      className="vote-button is-pending"
-      type="button"
-      disabled
-      aria-label={`${ideaTitle}への投票機能は準備中です`}
-    >
-      <span aria-hidden="true">＋</span>
+    <div className="vote-count" aria-label={`${ideaTitle}の投票数は${initialVotes}票です`}>
       <strong>{initialVotes}</strong>
-      <small>準備中</small>
-    </button>
+      <small>票</small>
+    </div>
   );
 }

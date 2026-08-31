@@ -38,7 +38,9 @@ npm run check
 - `data/ideas.ts`：匿名の固定サンプルデータ
 - `.github/workflows/`：CIとGitHub PagesへのCD
 
-スターターには、Ticket A〜Dに対応する未実装箇所があります。担当Issueに指定されたコンポーネントとテストを中心に変更してください。
+スターター画面には、現在利用できるアイデア一覧と票数だけが表示されています。
+Ticket A〜Dのコンポーネントと`it.todo`は、チームでIssueを起票した後に実装するための境界です。
+未実装のボタンやフォームを無効状態で先に表示せず、担当Issueの受け入れ条件を満たす機能として完成させてください。
 
 <!-- BEGIN:nextjs-agent-rules -->
 

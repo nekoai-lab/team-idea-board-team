@@ -59,9 +59,9 @@ export function IdeaBoard() {
           </p>
         </div>
         <div className="hero-note" aria-label="現在のリリーステーマ">
-          <span>今回のリリース</span>
-          <strong>アイデアを見つけ、選び、追加しやすくする</strong>
-          <p>各メンバーのPull Requestが、ひとつの画面に統合されます。</p>
+          <span>現在のボード</span>
+          <strong>3件の改善アイデアを共有中</strong>
+          <p>チームから集まった気づきと、現在の票数を一覧で確認できます。</p>
         </div>
       </section>
 

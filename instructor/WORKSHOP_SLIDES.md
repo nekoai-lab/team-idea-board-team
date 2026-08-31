@@ -84,24 +84,24 @@ Settings
 
 全員が招待を承認し、チーム用リポジトリを開ける。
 
-## スライド7：CIとGitHub Pagesを動かす
+## スライド7：公開元とCIの必須チェックを準備する
 
 ### 画面に表示する内容
 
 ```text
-Actions → CI → Run workflow
 Settings → Pages → Source：GitHub Actions
-Actions → Deploy to GitHub Pages → Run workflow
+Actions → CI → Run workflow：main
 ```
 
 ### 完了条件
 
-- `quality`が緑色になっている
-- 公開URLでサンプルアイデアが3件表示される
+- Sourceが「GitHub Actions」になっている
+- CIの`quality`が緑色になっている
 
 ### 講師が伝えること
 
-赤くなった場合は設定を変更せず、失敗したStepを開いて講師を呼んでください。
+初回CIは、次の設定で`quality`を必須チェックとして選べるようにするための事前準備です。
+この時点ではアプリを公開しません。実際のCIはPull Request上で、CDはレビュー後に`main`へマージしたときに体験します。
 
 ## スライド8：`main`を保護する
 
@@ -116,7 +116,23 @@ Actions → Deploy to GitHub Pages → Run workflow
 
 この設定によって、実装者だけの判断では`main`へ変更を取り込めなくなります。
 
-## スライド9：Issueとレビュー相手を決める
+## スライド9：全員がローカルで確認する
+
+### 画面に表示する内容
+
+```bash
+gh repo clone リポジトリ所有者/team-idea-board-チーム番号
+cd team-idea-board-チーム番号
+nvm use
+npm ci
+npm run dev
+```
+
+### 完了条件
+
+全員のPCで3件のアイデアカードが表示される。
+
+## スライド10：Issueとレビュー相手を決める
 
 ### 画面に表示する内容
 
@@ -125,32 +141,18 @@ Actions → Deploy to GitHub Pages → Run workflow
 | 3人 | Ticket A、B、C | A→B→C→A |
 | 4人 | Ticket A、B、C、D | A→B→C→D→A |
 
-Issueテンプレートを選び、実装担当者をAssignする。
-
-## スライド10：全員がローカルで確認する
-
-### 画面に表示する内容
-
-```bash
-gh repo clone リポジトリ所有者/team-idea-board-チーム番号
-cd team-idea-board-チーム番号
-npm ci
-npm run check
-```
-
-### 完了条件
-
-全員の`npm run check`が成功する。
+Issueテンプレートを選び、背景と受け入れ条件を全員で確認してから担当者をAssignする。
 
 ## スライド11：開発ワークを始められる状態
 
 ### 画面に表示する内容
 
 - 全員が同じリポジトリへ参加している
-- CIと公開URLを確認できる
+- GitHub Pagesの公開元が設定されている
+- CIの`quality`が1回成功している
 - `main`が保護されている
 - 担当Issueとレビュー相手が決まっている
-- 全員のローカル確認が成功している
+- 全員のPCでスターター画面を確認できている
 
 1つでも終わっていない場合は、開発を始めず講師を呼ぶ。
 

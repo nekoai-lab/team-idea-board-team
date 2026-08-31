@@ -8,7 +8,7 @@ assignees: ""
 
 ## 背景
 
-現在はすべてのアイデアが表示され、カテゴリボタンも無効になっています。
+現在はすべてのアイデアが表示され、カテゴリ名を確認できますが、絞り込む操作はありません。
 関心のあるカテゴリだけを確認できるようにします。
 
 ## 受け入れ条件
@@ -20,9 +20,10 @@ assignees: ""
 - 該当するアイデアがない場合はEmpty Stateが表示される
 - 上記を確認する自動テストがある
 
-## 主に変更するファイル
+## 主に作成・変更するファイル
 
 - `components/CategoryFilter.tsx`
+- `components/IdeaBoard.tsx`
 - `tests/CategoryFilter.test.tsx`
 
 ## 対象外
