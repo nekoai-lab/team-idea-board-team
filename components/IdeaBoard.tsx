@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { CategoryFilter } from "@/components/CategoryFilter";
 import { IdeaCard } from "@/components/IdeaCard";
 import { IdeaForm } from "@/components/IdeaForm";
+import { IdeaSearch } from "@/components/IdeaSearch";
 import { IdeaSummary } from "@/components/IdeaSummary";
 import { initialIdeas } from "@/data/ideas";
 import { categories, type CategoryFilterValue, type IdeaDraft } from "@/types/idea";
@@ -11,14 +12,25 @@ import { categories, type CategoryFilterValue, type IdeaDraft } from "@/types/id
 export function IdeaBoard() {
   const [ideas, setIdeas] = useState(initialIdeas);
   const [activeCategory, setActiveCategory] = useState<CategoryFilterValue>("すべて");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const visibleIdeas = useMemo(
-    () =>
+  const visibleIdeas = useMemo(() => {
+    const byCategory =
       activeCategory === "すべて"
         ? ideas
-        : ideas.filter((idea) => idea.category === activeCategory),
-    [activeCategory, ideas],
-  );
+        : ideas.filter((idea) => idea.category === activeCategory);
+
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) {
+      return byCategory;
+    }
+
+    return byCategory.filter(
+      (idea) =>
+        idea.title.toLowerCase().includes(query) ||
+        idea.description.toLowerCase().includes(query),
+    );
+  }, [activeCategory, ideas, searchQuery]);
 
   const addIdea = (draft: IdeaDraft) => {
     setIdeas((currentIdeas) => [
@@ -75,6 +87,8 @@ export function IdeaBoard() {
             <span className="idea-count">{visibleIdeas.length}件を表示</span>
           </div>
 
+          <IdeaSearch value={searchQuery} onChange={setSearchQuery} />
+
           <CategoryFilter
             categories={categories}
             activeCategory={activeCategory}
@@ -86,8 +100,8 @@ export function IdeaBoard() {
               visibleIdeas.map((idea) => <IdeaCard key={idea.id} idea={idea} />)
             ) : (
               <div className="empty-state">
-                <strong>このカテゴリのアイデアはまだありません</strong>
-                <p>別のカテゴリを選ぶか、新しいアイデアを追加してください。</p>
+                <strong>条件に一致するアイデアが見つかりません</strong>
+                <p>キーワードやカテゴリを変えて、もう一度お試しください。</p>
               </div>
             )}
           </div>
